@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="680" viewBox="0 0 1000 680">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#F0E9DA" stroke-opacity=".045"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#A9A79C"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#E7A44B"/>
+    </marker>
+    <style>
+      .sans { font-family: "IBM Plex Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+      .mono { font-family: "IBM Plex Mono", Consolas, Menlo, "Courier New", monospace; }
+      .pill { fill: #1A2839; stroke: #F0E9DA; stroke-opacity: .3; }
+      .box { fill: #1A2839; stroke: #F0E9DA; stroke-opacity: .45; stroke-width: 1.5; }
+      .wire { fill: none; stroke: #A9A79C; stroke-opacity: .55; stroke-width: 1.5; }
+      .in { font-size: 16px; fill: #F0E9DA; }
+      .title { font-size: 19px; font-weight: 600; fill: #F0E9DA; }
+      .meta { font-size: 13px; fill: #A9A79C; letter-spacing: .04em; }
+      .tag { font-size: 12px; fill: #A9A79C; letter-spacing: .12em; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="680" rx="18" fill="#101A27"/>
+  <rect width="1000" height="680" rx="18" fill="url(#grid)"/>
+
+  <!-- header -->
+  <text x="40" y="54" class="mono tag" fill="#E7A44B" style="fill:#E7A44B">FUZZY HIERARCHY + GENETIC TUNING</text>
+  <text x="960" y="54" class="mono tag" text-anchor="end">6 INPUTS · 63 RULES</text>
+
+  <!-- fuzzy model region -->
+  <rect x="270" y="100" width="520" height="400" rx="18" fill="none" stroke="#E7A44B" stroke-opacity=".55" stroke-dasharray="6 6"/>
+  <text x="290" y="128" class="mono tag">FUZZY MODEL</text>
+
+  <!-- input groups -->
+  <text x="40" y="138" class="mono tag">FOOD · 0–10</text>
+  <text x="40" y="318" class="mono tag">SERVICE · 0–10</text>
+
+  <!-- wires: inputs -> systems -->
+  <path class="wire" d="M220 170C262 170 258 220 300 220"/>
+  <path class="wire" d="M220 220H300"/>
+  <path class="wire" d="M220 270C262 270 258 220 300 220"/>
+  <path class="wire" d="M220 350C262 350 258 400 300 400"/>
+  <path class="wire" d="M220 400H300"/>
+  <path class="wire" d="M220 450C262 450 258 400 300 400"/>
+  <!-- systems -> tip -->
+  <path class="wire" d="M510 220C545 220 535 295 570 295"/>
+  <path class="wire" d="M510 400C545 400 535 325 570 325"/>
+  <!-- tip -> output -->
+  <path class="wire" d="M760 310H826" marker-end="url(#arrow)"/>
+
+  <!-- inputs -->
+  <g class="sans in">
+    <rect class="pill" x="40" y="150" width="180" height="40" rx="20"/><text x="60" y="176">Temperature</text>
+    <rect class="pill" x="40" y="200" width="180" height="40" rx="20"/><text x="60" y="226">Flavour</text>
+    <rect class="pill" x="40" y="250" width="180" height="40" rx="20"/><text x="60" y="276">Portion size</text>
+    <rect class="pill" x="40" y="330" width="180" height="40" rx="20"/><text x="60" y="356">Attentiveness</text>
+    <rect class="pill" x="40" y="380" width="180" height="40" rx="20"/><text x="60" y="406">Friendliness</text>
+    <rect class="pill" x="40" y="430" width="180" height="40" rx="20"/><text x="60" y="456">Speed</text>
+  </g>
+
+  <!-- fuzzy systems -->
+  <rect class="box" x="300" y="175" width="210" height="90" rx="14"/>
+  <text x="405" y="214" class="sans title" text-anchor="middle">Food quality</text>
+  <text x="405" y="240" class="mono meta" text-anchor="middle">27 rules</text>
+
+  <rect class="box" x="300" y="355" width="210" height="90" rx="14"/>
+  <text x="405" y="394" class="sans title" text-anchor="middle">Service quality</text>
+  <text x="405" y="420" class="mono meta" text-anchor="middle">27 rules</text>
+
+  <rect class="box" x="570" y="265" width="190" height="90" rx="14"/>
+  <text x="665" y="304" class="sans title" text-anchor="middle">Tip</text>
+  <text x="665" y="330" class="mono meta" text-anchor="middle">9 rules</text>
+
+  <!-- output -->
+  <rect x="830" y="290" width="140" height="40" rx="20" fill="#E7A44B" fill-opacity=".14" stroke="#E7A44B"/>
+  <text x="900" y="316" class="sans in" text-anchor="middle">Predicted tip</text>
+
+  <!-- training error feedback -->
+  <path d="M900 330V600H794" fill="none" stroke="#A9A79C" stroke-opacity=".7" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#arrow)"/>
+  <text transform="translate(888 465) rotate(-90)" class="mono tag" text-anchor="middle">ERROR VS. ACTUAL TIP</text>
+
+  <!-- genetic algorithm -->
+  <path d="M530 558V506" fill="none" stroke="#E7A44B" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+  <text x="546" y="537" class="mono meta" style="fill:#E7A44B">evolves the membership functions</text>
+
+  <rect x="270" y="560" width="520" height="80" rx="16" fill="#1A2839" stroke="#E7A44B" stroke-width="1.5"/>
+  <text x="296" y="594" class="sans title">Genetic algorithm</text>
+  <text x="296" y="621" class="mono meta">population 200 · 1,000 generations · minimise error</text>
+</svg>

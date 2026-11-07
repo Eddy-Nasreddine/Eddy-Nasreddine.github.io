@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="680" viewBox="0 0 1000 680">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#F0E9DA" stroke-opacity=".045"/>
+    </pattern>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#E7A44B"/>
+    </marker>
+    <style>
+      .sans { font-family: "IBM Plex Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+      .mono { font-family: "IBM Plex Mono", Consolas, Menlo, "Courier New", monospace; }
+      .tag { font-size: 12px; fill: #A9A79C; letter-spacing: .12em; }
+      .cell { fill: #1A2839; stroke: #F0E9DA; stroke-opacity: .3; }
+      .val { font-size: 17px; fill: #F0E9DA; }
+      .var { fill: #E7A44B; font-weight: 700; }
+      .axis { stroke: #F0E9DA; stroke-opacity: .45; stroke-width: 1.5; fill: none; }
+      .tick { font-size: 13px; fill: #A9A79C; }
+      .ptitle { font-size: 19px; font-weight: 600; fill: #F0E9DA; }
+      .lbl { font-size: 15px; }
+      .poor { stroke: #D9826A; fill: #D9826A; }
+      .avg { stroke: #E7A44B; fill: #E7A44B; }
+      .good { stroke: #8FB3D9; fill: #8FB3D9; }
+      .tri { fill-opacity: .1; stroke-width: 2.5; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="680" rx="18" fill="#101A27"/>
+  <rect width="1000" height="680" rx="18" fill="url(#grid)"/>
+
+  <!-- header -->
+  <text x="40" y="50" class="mono tag" style="fill:#E7A44B">ONE CHROMOSOME · 6 TRIANGULAR MEMBERSHIP FUNCTIONS</text>
+
+  <!-- chromosome -->
+  <text x="40" y="84" class="mono tag">RATINGS</text>
+  <text x="505" y="84" class="mono tag">TIP</text>
+  <g class="mono">
+    <rect class="cell" x="40" y="96" width="145" height="64" rx="12"/>
+    <text x="58" y="121" class="tag" style="fill:#D9826A">POOR</text>
+    <text x="58" y="146" class="val">[0, 0, <tspan class="var">s</tspan>]</text>
+
+    <rect class="cell" x="195" y="96" width="145" height="64" rx="12"/>
+    <text x="213" y="121" class="tag" style="fill:#E7A44B">AVERAGE</text>
+    <text x="213" y="146" class="val">[0, <tspan class="var">s</tspan>, 10]</text>
+
+    <rect class="cell" x="350" y="96" width="145" height="64" rx="12"/>
+    <text x="368" y="121" class="tag" style="fill:#8FB3D9">GOOD</text>
+    <text x="368" y="146" class="val">[<tspan class="var">s</tspan>, 10, 10]</text>
+
+    <rect class="cell" x="505" y="96" width="145" height="64" rx="12"/>
+    <text x="523" y="121" class="tag" style="fill:#D9826A">POOR</text>
+    <text x="523" y="146" class="val">[0, 0, <tspan class="var">t</tspan>]</text>
+
+    <rect class="cell" x="660" y="96" width="145" height="64" rx="12"/>
+    <text x="678" y="121" class="tag" style="fill:#E7A44B">AVERAGE</text>
+    <text x="678" y="146" class="val">[0, <tspan class="var">t</tspan>, 30]</text>
+
+    <rect class="cell" x="815" y="96" width="145" height="64" rx="12"/>
+    <text x="833" y="121" class="tag" style="fill:#8FB3D9">GOOD</text>
+    <text x="833" y="146" class="val">[<tspan class="var">t</tspan>, 30, 30]</text>
+  </g>
+
+  <!-- ===== Ratings plot (0–10) ===== -->
+  <text x="70" y="218" class="sans ptitle">Ratings <tspan class="mono tick">0–10</tspan></text>
+  <polygon class="tri poor" points="70,250 298,500 70,500"/>
+  <polygon class="tri avg" points="70,500 298,250 450,500"/>
+  <polygon class="tri good" points="298,500 450,250 450,500"/>
+  <path class="axis" d="M70 244V500H450"/>
+  <text x="60" y="255" class="mono tick" text-anchor="end">1</text>
+  <text x="60" y="505" class="mono tick" text-anchor="end">0</text>
+  <text x="70" y="524" class="mono tick" text-anchor="middle">0</text>
+  <text x="450" y="524" class="mono tick" text-anchor="middle">10</text>
+  <text x="80" y="240" class="sans lbl" style="fill:#D9826A">poor</text>
+  <text x="298" y="240" class="sans lbl" style="fill:#E7A44B" text-anchor="middle">average</text>
+  <text x="440" y="240" class="sans lbl" style="fill:#8FB3D9" text-anchor="end">good</text>
+  <path d="M298 256V500" stroke="#E7A44B" stroke-width="1.5" stroke-dasharray="4 5"/>
+  <text x="298" y="528" class="mono var" font-size="18" text-anchor="middle">s</text>
+  <path d="M286 523H258" stroke="#E7A44B" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+  <path d="M310 523H338" stroke="#E7A44B" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+
+  <!-- ===== Tip plot (0–30) ===== -->
+  <text x="560" y="218" class="sans ptitle">Tip <tspan class="mono tick">0–30</tspan></text>
+  <polygon class="tri poor" points="560,250 712,500 560,500"/>
+  <polygon class="tri avg" points="560,500 712,250 940,500"/>
+  <polygon class="tri good" points="712,500 940,250 940,500"/>
+  <path class="axis" d="M560 244V500H940"/>
+  <text x="550" y="255" class="mono tick" text-anchor="end">1</text>
+  <text x="550" y="505" class="mono tick" text-anchor="end">0</text>
+  <text x="560" y="524" class="mono tick" text-anchor="middle">0</text>
+  <text x="940" y="524" class="mono tick" text-anchor="middle">30</text>
+  <text x="570" y="240" class="sans lbl" style="fill:#D9826A">poor</text>
+  <text x="712" y="240" class="sans lbl" style="fill:#E7A44B" text-anchor="middle">average</text>
+  <text x="930" y="240" class="sans lbl" style="fill:#8FB3D9" text-anchor="end">good</text>
+  <path d="M712 256V500" stroke="#E7A44B" stroke-width="1.5" stroke-dasharray="4 5"/>
+  <text x="712" y="528" class="mono var" font-size="18" text-anchor="middle">t</text>
+  <path d="M700 523H672" stroke="#E7A44B" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+  <path d="M724 523H752" stroke="#E7A44B" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+
+  <!-- caption -->
+  <line x1="40" y1="566" x2="960" y2="566" stroke="#F0E9DA" stroke-opacity=".12"/>
+  <text x="500" y="602" class="sans" font-size="17" fill="#F0E9DA" text-anchor="middle">The genetic algorithm moves <tspan class="var">s</tspan> and <tspan class="var">t</tspan> to minimise total error on the training set.</text>
+  <text x="500" y="632" class="mono tick" text-anchor="middle">each triangle is [a, b, c]: membership rises from a to a peak of 1 at b, then falls back to 0 at c</text>
+</svg>
