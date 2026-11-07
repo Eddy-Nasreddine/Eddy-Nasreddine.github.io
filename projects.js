@@ -160,23 +160,27 @@ const PROJECTS = [
     title: "RBMK Reactor Simulation",
     subtitle: "A neutron-by-neutron simulation of a Chernobyl-type reactor",
     kind: "Personal",
-    year: "[year]",
-    summary: "A Python/Pygame simulation of an RBMK reactor, built out of curiosity about how they actually work. Instead of boiling the core down to a single number, it simulates individual neutrons so you can watch the activity spread, aiming for behaviour realistic enough that the reactor can, in a sense, explode.",
+    year: "2026",
+    summary: "A 2D simulation of an RBMK reactor, the type used at Chernobyl, built out of curiosity about how they actually work. Instead of boiling the core down to a single number, it simulates individual neutrons as they split uranium, boil the cooling water and poison the core with xenon. Do the wrong things in the wrong order and you can recreate the 1986 accident.",
     built: [
-      "The core: a grid of fuel cells, moderators, water and control rods, with thermal and fast neutrons simulated one by one (Monte Carlo style).",
-      "Xenon poisoning: a cell can turn into xenon when it absorbs a neutron, and only clears when it absorbs a thermal neutron.",
-      "Refuelling: logic that keeps a target number of active cells in the core.",
-      "Control panel: drag the control rods with the mouse, with sliders, a manual-control toggle and indicator lamps styled like old industrial panels.",
+      "The core: a 56 × 30 grid of uranium fuel, cooling water, graphite moderators and control rods, with every neutron simulated individually and spent fuel refuelled automatically.",
+      "Physics: only slow neutrons split uranium and each split releases three more, so the core can run away fast. Boiling water stops absorbing neutrons (the positive void coefficient), while hot fuel splits less often and pulls the power back down.",
+      "Xenon: split fuel slowly turns into xenon, which eats neutrons and can trap the reactor at low power in a xenon pit, like Chernobyl before the test.",
+      "Control rods: manual control, an automatic mode that holds a neutron target, and a SCRAM whose graphite tips push the power up before the rods can shut it down.",
+      "Control panel: live readouts for temperature, power, coolant and steam, a 60-second power graph, and Geiger counter clicks synthesised for every split.",
     ],
-    stack: ["Python", "Pygame", "OOP", "Simulation"],
+    stack: ["Python", "Pygame"],
+    specs: [
+      { label: "Core", value: "56 × 30 cells" },
+      { label: "Neutrons per split", value: "3" },
+      { label: "Rated output", value: "3,200 MWt / 1,000 MWe (scaled)" },
+    ],
     images: [
-      // Put screenshots in images/rbmk-reactor/ and add a src to each line.
-      { caption: "[Reactor core running]" },
-      { caption: "[Control panel]" },
+      { src: "images/rbmk-reactor/full-power.png", caption: "Running at full power, around 3,200 MW thermal" },
+      { src: "images/rbmk-reactor/runaway.png", caption: "Pumps at 0%: the water boils off and the power runs away" },
     ],
     links: [
-      // Replace [repo] with the repository name, or delete this line if it isn't public.
-      { type: "github", url: "https://github.com/Eddy-Nasreddine/[repo]" },
+      { type: "github", url: "https://github.com/Eddy-Nasreddine/rbmk-reactor-sim" },
     ],
   },
 
